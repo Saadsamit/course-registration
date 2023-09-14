@@ -9,15 +9,18 @@ function App() {
     .then(res => res.json())
     .then(Courses => setData(Courses))
   },[])
-  data.map(myData=>console.log(myData))
+  
   return (
     <>
       <h1 className="text-3xl text-header capitalize text-center font-bold py-9">
       Course Registration
     </h1>
-    <div className="flex md:flex-row flex-col-reverse container mx-auto">
-      <div className="md:w-3/4 w-full md:pt-0 pt-3">
-        <Card/>
+    <div className="flex md:flex-row flex-col-reverse container mx-auto gap-5">
+      <div className="md:w-3/4 w-full md:pt-0 pt-3 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 pb-5">
+        {
+          data.map((myData,idx)=><Card key={idx} Course={myData}/>)
+        }
+        
       </div>
       <div className="md:w-1/3 w-full">
       <Aside/>
